@@ -18,7 +18,7 @@ Some profile actions may write commands to a BLE device. Only send commands when
 
 ## Profile Files
 
-Profile files may be bundled with the app, downloaded from this site, imported by you, or created by other users. Review profile files before using them with hardware. A profile can define command payloads and parsing rules, and an incorrect or untrusted profile may display wrong values or send unintended commands.
+Profile files may be downloaded from this site, imported by you, or created by other users. Review profile files before using them with hardware. A profile can define command payloads and parsing rules, and an incorrect or untrusted profile may display wrong values or send unintended commands.
 
 ## No Warranty
 

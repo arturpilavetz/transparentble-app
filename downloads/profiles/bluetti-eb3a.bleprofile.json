@@ -82,6 +82,215 @@
       "payload": "01 03 0B F4 00 07 47 DE",
       "expectedResponseLength": 19,
       "checksum": "modbusCRC"
+    },
+    {
+      "id": "acOutputOn",
+      "title": "AC Output On",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B BF 00 01 7B CA",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "acOutputOff",
+      "title": "AC Output Off",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B BF 00 00 BA 0A",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "dcOutputOn",
+      "title": "DC Output On",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B C0 00 01 4A 12",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "dcOutputOff",
+      "title": "DC Output Off",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B C0 00 00 8B D2",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "ecoOn",
+      "title": "ECO On",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B F7 00 01 FB DC",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "ecoOff",
+      "title": "ECO Off",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B F7 00 00 3A 1C",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "powerLiftingOn",
+      "title": "Power Lifting On",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B FA 00 01 6A 1F",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "powerLiftingOff",
+      "title": "Power Lifting Off",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B FA 00 00 AB DF",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "ledLow",
+      "title": "LED Mode Low",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B DA 00 01 6B D5",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "ledHigh",
+      "title": "LED Mode High",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B DA 00 02 2B D4",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "ledSOS",
+      "title": "LED Mode SOS",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B DA 00 03 EA 14",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "ledOff",
+      "title": "LED Mode Off",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B DA 00 04 AB D6",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "ecoShutdown1h",
+      "title": "ECO Shutdown 1 hour",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B F8 00 01 CB DF",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "ecoShutdown2h",
+      "title": "ECO Shutdown 2 hours",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B F8 00 02 8B DE",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "ecoShutdown3h",
+      "title": "ECO Shutdown 3 hours",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B F8 00 03 4A 1E",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "ecoShutdown4h",
+      "title": "ECO Shutdown 4 hours",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B F8 00 04 0B DC",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "chargingStandard",
+      "title": "Charging Mode Standard",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B F9 00 00 5B DF",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "chargingSilent",
+      "title": "Charging Mode Silent",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B F9 00 01 9A 1F",
+      "expectedResponseLength": 0,
+      "checksum": "none"
+    },
+    {
+      "id": "chargingTurbo",
+      "title": "Charging Mode Turbo",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 06 0B F9 00 02 DA 1E",
+      "expectedResponseLength": 0,
+      "checksum": "none"
     }
   ],
   "fields": [
@@ -318,7 +527,73 @@
       "power_lifting_on"
     ]
   },
-  "bundledControls": [
-    "bluetti.eb3a.experimentalControls"
+  "controls": [
+    {
+      "id": "acOutput",
+      "title": "AC Output",
+      "type": "toggle",
+      "stateField": "ac_output_on",
+      "onAction": "acOutputOn",
+      "offAction": "acOutputOff"
+    },
+    {
+      "id": "dcOutput",
+      "title": "DC Output",
+      "type": "toggle",
+      "stateField": "dc_output_on",
+      "onAction": "dcOutputOn",
+      "offAction": "dcOutputOff"
+    },
+    {
+      "id": "eco",
+      "title": "ECO",
+      "type": "toggle",
+      "stateField": "eco_on",
+      "onAction": "ecoOn",
+      "offAction": "ecoOff"
+    },
+    {
+      "id": "powerLifting",
+      "title": "Power Lifting",
+      "type": "toggle",
+      "stateField": "power_lifting_on",
+      "onAction": "powerLiftingOn",
+      "offAction": "powerLiftingOff"
+    },
+    {
+      "id": "ledMode",
+      "title": "LED Mode",
+      "type": "optionPicker",
+      "stateField": "led_mode",
+      "options": [
+        { "id": "low", "title": "Low", "action": "ledLow" },
+        { "id": "high", "title": "High", "action": "ledHigh" },
+        { "id": "sos", "title": "SOS", "action": "ledSOS" },
+        { "id": "off", "title": "Off", "action": "ledOff" }
+      ]
+    },
+    {
+      "id": "ecoShutdown",
+      "title": "ECO Shutdown",
+      "type": "optionPicker",
+      "stateField": "eco_shutdown",
+      "options": [
+        { "id": "oneHour", "title": "1 hour", "action": "ecoShutdown1h" },
+        { "id": "twoHours", "title": "2 hours", "action": "ecoShutdown2h" },
+        { "id": "threeHours", "title": "3 hours", "action": "ecoShutdown3h" },
+        { "id": "fourHours", "title": "4 hours", "action": "ecoShutdown4h" }
+      ]
+    },
+    {
+      "id": "chargingMode",
+      "title": "Charging Mode",
+      "type": "optionPicker",
+      "stateField": "charging_mode",
+      "options": [
+        { "id": "standard", "title": "Standard", "action": "chargingStandard" },
+        { "id": "silent", "title": "Silent", "action": "chargingSilent" },
+        { "id": "turbo", "title": "Turbo", "action": "chargingTurbo" }
+      ]
+    }
   ]
 }

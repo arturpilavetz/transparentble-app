@@ -39,6 +39,20 @@
 	margin-top: 2rem;
 }
 
+.download-link {
+	background: #111;
+	border-radius: 8px;
+	color: #fff;
+	display: inline-block;
+	font-weight: 600;
+	margin: 0.25rem 0 1rem;
+	padding: 0.65rem 0.9rem;
+}
+
+.download-link:visited {
+	color: #fff;
+}
+
 @media screen and (max-width: 600px) {
 	.site-title {
 		font-size: 1.65rem;

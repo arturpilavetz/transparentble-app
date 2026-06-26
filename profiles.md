@@ -12,21 +12,23 @@ A profile can define device name prefixes, service and characteristic UUIDs, pol
 
 ### EB3A
 
-Included with the app as a bundled default profile.
+A downloadable profile for importing into TransparentBLE.
 
-[Download EB3A profile](/transparentble-app/downloads/profiles/bluetti-eb3a.bleprofile.json)
+<a class="download-link" href="/transparentble-app/downloads/profiles/bluetti-eb3a.bleprofile.json" download>Download EB3A profile file</a>
 
 ### ESP32-C6 LED
 
 A sample profile for a custom ESP32-C6 BLE LED device. It demonstrates reading state, toggling power, setting RGB values, and changing brightness.
 
-[Download ESP32-C6 LED profile](/transparentble-app/downloads/profiles/esp32-c6-led.bleprofile.json)
+<a class="download-link" href="/transparentble-app/downloads/profiles/esp32-c6-led.bleprofile.json" download>Download ESP32-C6 LED profile file</a>
 
 ## Importing Profiles
 
-Download a `.bleprofile.json` file, then import it from TransparentBLE Settings using Device Profiles.
+Download a `.bleprofile.json` file to Files on your iPhone or iPad, then import it from TransparentBLE Settings using Device Profiles.
 
-Imported profiles are stored locally on your device. If an imported profile uses the same profile id as a bundled profile and has a higher version, the imported profile can override the bundled one.
+On iOS Safari, use the download button and save the file locally. If Safari opens the JSON as text, use Share and save it to Files, then import that saved file from the app.
+
+Imported profiles are stored locally on your device. You can export or delete imported profiles from TransparentBLE Settings.
 
 ## Creating Profiles
 
@@ -44,7 +46,7 @@ Every profile needs these top-level fields:
 - `vendor`: the maker, project, or profile author name
 - `version`: a version string for this profile
 
-If an imported profile has the same `id` as a bundled profile, TransparentBLE keeps the newer version.
+If two imported profiles use the same `id`, TransparentBLE keeps the newer version.
 
 ## Device Matching
 
@@ -83,11 +85,15 @@ Each action has:
 - `writeType`: `withResponse` or `withoutResponse`
 - `payload`: hex bytes to write
 - `payloadTemplate`: optional hex template with placeholders
-- `expectedResponseLength`: full response length in bytes
+- `expectedResponseLength`: full notification response length in bytes, or `0` when the write does not return a notification payload
 - `checksum`: `none` or `modbusCRC`
 - `responseFieldsAction`: optional action id whose field definitions should parse this response
 
 Payloads are written as hex bytes, for example `01 03 00 0A`. For dynamic controls, `payloadTemplate` can contain `{value}`, `{red}`, `{green}`, and `{blue}` placeholders. TransparentBLE replaces these placeholders with one-byte hex values before writing.
+
+Read actions and write actions use the same structure. A read action usually updates fields directly from the response. A write action can change device state, then TransparentBLE refreshes the profile snapshot so the UI shows the confirmed device state.
+
+Use `expectedResponseLength: 0` for write commands that should be sent and then followed by a snapshot refresh, without waiting for a notification response.
 
 ## Polling
 
@@ -147,6 +153,7 @@ Supported control types:
 - `toggle`
 - `valueSlider`
 - `rgbSliders`
+- `optionPicker`
 
 Common control fields:
 
@@ -161,8 +168,58 @@ Common control fields:
 - `minValue` and `maxValue`: slider range
 - `unit`: optional display unit
 - `redField`, `greenField`, `blueField`: fields used by RGB controls
+- `options`: menu choices for `optionPicker` controls
 
 Controls should only point to actions you understand and consider safe. If a device command can change hardware state, power output, calibration, firmware settings, or stored configuration, treat it as a control action and test carefully.
+
+### Toggle Controls
+
+Use `toggle` for on/off values. The control reads its current state from `stateField` and sends either `onAction` or `offAction`.
+
+Required fields:
+
+- `stateField`
+- `onAction`
+- `offAction`
+
+### Value Slider Controls
+
+Use `valueSlider` for one-byte numeric values such as brightness, level, or threshold. The control reads its current value from `valueField` and sends `action` with a `payloadTemplate` placeholder.
+
+Common fields:
+
+- `valueField`
+- `action`
+- `valueKey`
+- `minValue`
+- `maxValue`
+- `unit`
+
+For example, if `valueKey` is `value`, the action payload can contain `{value}`.
+
+### RGB Slider Controls
+
+Use `rgbSliders` for three one-byte color values. The control reads `redField`, `greenField`, and `blueField`, then sends `action` with `{red}`, `{green}`, and `{blue}` placeholders.
+
+### Option Picker Controls
+
+Use `optionPicker` for menu-style controls such as mode, preset, duration, or charging behavior. The control reads its current value from `stateField`. Each item in `options` has:
+
+- `id`: stable option id
+- `title`: visible option label
+- `action`: action id to send when selected
+
+Option titles should match the decoded enum values when possible. That lets TransparentBLE show a checkmark next to the current option.
+
+## Control Actions
+
+Every control eventually sends a normal profile action. That means users can create the same kinds of controls for their own BLE devices by defining:
+
+1. fields that decode the current device state
+2. actions that send safe commands
+3. controls that link state fields to those actions
+
+No device should need Swift code for its controls. Device-specific behavior belongs in the profile file as actions, fields, and controls.
 
 ## Validation Rules
 
@@ -174,7 +231,7 @@ TransparentBLE validates imported profiles before using them. A profile can be r
 - UUIDs are invalid
 - an action references a missing service or characteristic
 - an action payload is empty or invalid hex
-- `expectedResponseLength` is not greater than zero
+- `expectedResponseLength` is less than zero
 - a field references a missing action
 - a field byte range falls outside the action response data
 - a control references a missing field or action
