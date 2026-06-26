@@ -1,0 +1,49 @@
+{%- assign nav_items = "Privacy Policy:/privacy/,Profiles:/profiles/,Support:/support/,Terms of Use:/terms/" | split: "," -%}
+
+<header class="site-header app-header" role="banner">
+	<div class="wrapper app-header__inner">
+		<a class="site-title app-brand" rel="author" href="{{ '/' | relative_url }}">TransparentBLE</a>
+
+		<nav class="desktop-nav" aria-label="Main navigation">
+			{%- for item in nav_items -%}
+				{%- assign nav_item = item | split: ":" -%}
+				<a href="{{ nav_item[1] | relative_url }}">{{ nav_item[0] }}</a>
+			{%- endfor -%}
+		</nav>
+
+		<details class="mobile-menu">
+			<summary class="mobile-menu__button" aria-label="Open navigation">
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+			</summary>
+
+			<nav class="mobile-menu__panel" aria-label="Mobile navigation">
+				{%- for item in nav_items -%}
+					{%- assign nav_item = item | split: ":" -%}
+					<a href="{{ nav_item[1] | relative_url }}">{{ nav_item[0] }}</a>
+				{%- endfor -%}
+			</nav>
+		</details>
+	</div>
+</header>
+
+<script>
+	document.addEventListener("click", function(event) {
+		document.querySelectorAll(".mobile-menu[open]").forEach(function(menu) {
+			if (!menu.contains(event.target)) {
+				menu.removeAttribute("open");
+			}
+		});
+	});
+
+	document.addEventListener("keydown", function(event) {
+		if (event.key !== "Escape") {
+			return;
+		}
+
+		document.querySelectorAll(".mobile-menu[open]").forEach(function(menu) {
+			menu.removeAttribute("open");
+		});
+	});
+</script>
