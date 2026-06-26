@@ -10,11 +10,11 @@ By using TransparentBLE, you agree to these terms.
 
 ## Use Of The App
 
-TransparentBLE is a Bluetooth Low Energy utility for scanning, connecting, inspecting, recording local diagnostics, and working with BLE device profiles. You are responsible for using the app safely and only with devices you own or are authorized to inspect.
+TransparentBLE is a Bluetooth Low Energy utility for scanning, connecting, inspecting, recording local diagnostics, and working with BLE device profiles. Profiles can describe how device data is parsed, displayed, and controlled. You are responsible for using the app safely and only with devices you own or are authorized to inspect.
 
 ## Device Control And Profile Writes
 
-Some profile actions may write commands to a BLE device. Only send commands when you understand their purpose and trust the target device and profile. The app may require confirmation for control actions, but you remain responsible for the commands you choose to send.
+Some profile actions may write commands to a BLE device. Only send commands when you understand their purpose and trust the target device and profile file. The app may require confirmation for control actions, but you remain responsible for the commands you choose to send.
 
 ## No Warranty
 

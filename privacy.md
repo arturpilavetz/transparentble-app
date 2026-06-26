@@ -6,13 +6,13 @@ permalink: /privacy/
 
 Effective date: June 25, 2026
 
-TransparentBLE is designed as a local Bluetooth Low Energy utility. The app scans for nearby BLE devices, connects to devices when you choose, inspects services and characteristics, records diagnostic log files, and loads device profile files.
+TransparentBLE is designed as a local Bluetooth Low Energy utility. The app scans for nearby BLE devices, connects to devices when you choose, inspects services and characteristics, records diagnostic log files, and loads profile files that describe how BLE device data and commands should be handled.
 
 ## Data We Collect
 
 TransparentBLE does not collect, transmit, sell, or share personal data with the developer or third parties.
 
-The app can create local diagnostic log files on your device when you start recording. These logs may include BLE device names, device identifiers, RSSI values, GATT service and characteristic UUIDs, raw BLE payloads, timestamps, app lifecycle events, and profile decoding results.
+The app can create local diagnostic log files on your device when you start recording. These logs may include BLE device names, device identifiers, RSSI values, GATT service and characteristic UUIDs, raw BLE payloads, timestamps, app lifecycle events, profile decoding results, and command responses.
 
 ## Bluetooth
 

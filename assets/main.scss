@@ -3,6 +3,25 @@
 
 @import "minima";
 
+.site-header {
+	min-height: 72px;
+}
+
+.site-header .wrapper {
+	align-items: center;
+	display: flex;
+	min-height: 72px;
+}
+
+.site-title {
+	line-height: 1.1;
+}
+
+.site-nav {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
 .page-content {
 	padding: 52px 0 36px;
 }
