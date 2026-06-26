@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "id": "bluetti.eb3a",
+  "name": "EB3A",
+  "vendor": "Bluetti",
+  "version": "1.0.0",
+  "match": {
+    "namePrefixes": [
+      "EB3A"
+    ],
+    "serviceUUIDs": [
+      "FF00"
+    ]
+  },
+  "services": [
+    {
+      "id": "main",
+      "uuid": "FF00",
+      "write": [
+        "FF02"
+      ],
+      "notify": [
+        "FF01",
+        "FF03",
+        "FF04"
+      ],
+      "read": [
+        "FF04"
+      ]
+    }
+  ],
+  "polling": {
+    "defaultIntervalSeconds": 5,
+    "snapshotActions": [
+      "core",
+      "details",
+      "ledMode",
+      "settings"
+    ]
+  },
+  "actions": [
+    {
+      "id": "core",
+      "title": "Read Core State",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 03 00 0A 00 28 65 D6",
+      "expectedResponseLength": 85,
+      "checksum": "modbusCRC"
+    },
+    {
+      "id": "details",
+      "title": "Read Details",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 03 00 46 00 15 65 D0",
+      "expectedResponseLength": 47,
+      "checksum": "modbusCRC"
+    },
+    {
+      "id": "ledMode",
+      "title": "Read LED Mode",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 03 0B DA 00 01 A7 D5",
+      "expectedResponseLength": 7,
+      "checksum": "modbusCRC"
+    },
+    {
+      "id": "settings",
+      "title": "Read Settings",
+      "service": "main",
+      "writeCharacteristic": "FF02",
+      "notifyCharacteristic": "FF01",
+      "writeType": "withResponse",
+      "payload": "01 03 0B F4 00 07 47 DE",
+      "expectedResponseLength": 19,
+      "checksum": "modbusCRC"
+    }
+  ],
+  "fields": [
+    {
+      "id": "device_type",
+      "title": "Device Type",
+      "action": "core",
+      "byteOffset": 0,
+      "byteLength": 14,
+      "type": "string",
+      "endian": "big"
+    },
+    {
+      "id": "serial_number",
+      "title": "Serial Number",
+      "action": "core",
+      "byteOffset": 14,
+      "byteLength": 8,
+      "type": "serialNumber",
+      "endian": "big"
+    },
+    {
+      "id": "arm_version",
+      "title": "ARM Version",
+      "action": "core",
+      "byteOffset": 26,
+      "byteLength": 4,
+      "type": "version",
+      "endian": "big"
+    },
+    {
+      "id": "dsp_version",
+      "title": "DSP Version",
+      "action": "core",
+      "byteOffset": 30,
+      "byteLength": 4,
+      "type": "version",
+      "endian": "big"
+    },
+    {
+      "id": "dc_input_power",
+      "title": "DC Input",
+      "action": "core",
+      "byteOffset": 52,
+      "byteLength": 2,
+      "type": "uint16",
+      "endian": "big",
+      "unit": "W"
+    },
+    {
+      "id": "ac_input_power",
+      "title": "AC Input",
+      "action": "core",
+      "byteOffset": 54,
+      "byteLength": 2,
+      "type": "uint16",
+      "endian": "big",
+      "unit": "W"
+    },
+    {
+      "id": "ac_output_power",
+      "title": "AC Output",
+      "action": "core",
+      "byteOffset": 56,
+      "byteLength": 2,
+      "type": "uint16",
+      "endian": "big",
+      "unit": "W"
+    },
+    {
+      "id": "dc_output_power",
+      "title": "DC Output",
+      "action": "core",
+      "byteOffset": 58,
+      "byteLength": 2,
+      "type": "uint16",
+      "endian": "big",
+      "unit": "W"
+    },
+    {
+      "id": "power_generation",
+      "title": "Power Generation",
+      "action": "core",
+      "byteOffset": 62,
+      "byteLength": 2,
+      "type": "decimal",
+      "endian": "big",
+      "scale": 1,
+      "unit": "kWh"
+    },
+    {
+      "id": "total_battery_percent",
+      "title": "Battery",
+      "action": "core",
+      "byteOffset": 66,
+      "byteLength": 2,
+      "type": "uint16",
+      "endian": "big",
+      "unit": "%"
+    },
+    {
+      "id": "ac_output_on",
+      "title": "AC Output",
+      "action": "core",
+      "byteOffset": 76,
+      "byteLength": 2,
+      "type": "bool",
+      "endian": "big"
+    },
+    {
+      "id": "dc_output_on",
+      "title": "DC Output",
+      "action": "core",
+      "byteOffset": 78,
+      "byteLength": 2,
+      "type": "bool",
+      "endian": "big"
+    },
+    {
+      "id": "internal_ac_voltage",
+      "title": "Internal AC Voltage",
+      "action": "details",
+      "byteOffset": 14,
+      "byteLength": 2,
+      "type": "decimal",
+      "endian": "big",
+      "scale": 1,
+      "unit": "V"
+    },
+    {
+      "id": "internal_current_one",
+      "title": "Internal Current",
+      "action": "details",
+      "byteOffset": 32,
+      "byteLength": 4,
+      "type": "decimal",
+      "endian": "big",
+      "scale": 1,
+      "unit": "A"
+    },
+    {
+      "id": "pack_max_num",
+      "title": "Pack Max Num",
+      "action": "details",
+      "byteOffset": 40,
+      "byteLength": 2,
+      "type": "uint16",
+      "endian": "big"
+    },
+    {
+      "id": "led_mode",
+      "title": "LED Mode",
+      "action": "ledMode",
+      "byteOffset": 0,
+      "byteLength": 2,
+      "type": "enum",
+      "endian": "big",
+      "values": {
+        "1": "Low",
+        "2": "High",
+        "3": "SOS",
+        "4": "Off"
+      }
+    },
+    {
+      "id": "eco_on",
+      "title": "ECO",
+      "action": "settings",
+      "byteOffset": 6,
+      "byteLength": 2,
+      "type": "bool",
+      "endian": "big"
+    },
+    {
+      "id": "eco_shutdown",
+      "title": "ECO Shutdown",
+      "action": "settings",
+      "byteOffset": 8,
+      "byteLength": 2,
+      "type": "enum",
+      "endian": "big",
+      "values": {
+        "1": "1 hour",
+        "2": "2 hours",
+        "3": "3 hours",
+        "4": "4 hours"
+      }
+    },
+    {
+      "id": "charging_mode",
+      "title": "Charging Mode",
+      "action": "settings",
+      "byteOffset": 10,
+      "byteLength": 2,
+      "type": "enum",
+      "endian": "big",
+      "values": {
+        "0": "Standard",
+        "1": "Silent",
+        "2": "Turbo"
+      }
+    },
+    {
+      "id": "power_lifting_on",
+      "title": "Power Lifting",
+      "action": "settings",
+      "byteOffset": 12,
+      "byteLength": 2,
+      "type": "bool",
+      "endian": "big"
+    }
+  ],
+  "ui": {
+    "fieldOrder": [
+      "device_type",
+      "serial_number",
+      "arm_version",
+      "dsp_version",
+      "total_battery_percent",
+      "ac_input_power",
+      "dc_input_power",
+      "ac_output_power",
+      "dc_output_power",
+      "power_generation",
+      "ac_output_on",
+      "dc_output_on",
+      "internal_ac_voltage",
+      "internal_current_one",
+      "pack_max_num",
+      "led_mode",
+      "eco_on",
+      "eco_shutdown",
+      "charging_mode",
+      "power_lifting_on"
+    ]
+  },
+  "bundledControls": [
+    "bluetti.eb3a.experimentalControls"
+  ]
+}

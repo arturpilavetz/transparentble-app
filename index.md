@@ -25,5 +25,6 @@ TransparentBLE can record diagnostic logs locally on the device. Logs are useful
 TransparentBLE does not use developer-operated cloud services, analytics, ads, or tracking SDKs. Device data, profile files, and logs stay local unless you choose to export or share them.
 
 - [Privacy Policy](/transparentble-app/privacy/)
+- [Profiles](/transparentble-app/profiles/)
 - [Terms of Use](/transparentble-app/terms/)
 - [Support](/transparentble-app/support/)

@@ -16,6 +16,10 @@ TransparentBLE is a Bluetooth Low Energy utility for scanning, connecting, inspe
 
 Some profile actions may write commands to a BLE device. Only send commands when you understand their purpose and trust the target device and profile file. The app may require confirmation for control actions, but you remain responsible for the commands you choose to send.
 
+## Profile Files
+
+Profile files may be bundled with the app, downloaded from this site, imported by you, or created by other users. Review profile files before using them with hardware. A profile can define command payloads and parsing rules, and an incorrect or untrusted profile may display wrong values or send unintended commands.
+
 ## No Warranty
 
 TransparentBLE is provided as is, without warranties of any kind. The app may not work with every BLE device, firmware version, or iOS version.

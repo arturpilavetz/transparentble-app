@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "id": "sample.esp32c6.led",
+  "name": "ESP32-C6 LED",
+  "vendor": "TransparentBLE",
+  "version": "1.0.2",
+  "match": {
+    "namePrefixes": [
+      "TransparentBLE-C6"
+    ],
+    "serviceUUIDs": [
+      "FFF0"
+    ]
+  },
+  "services": [
+    {
+      "id": "main",
+      "uuid": "FFF0",
+      "write": [
+        "FFF2"
+      ],
+      "notify": [
+        "FFF1"
+      ],
+      "read": []
+    }
+  ],
+  "polling": {
+    "defaultIntervalSeconds": 5,
+    "snapshotActions": [
+      "readState"
+    ]
+  },
+  "actions": [
+    {
+      "id": "readState",
+      "title": "Read LED State",
+      "service": "main",
+      "writeCharacteristic": "FFF2",
+      "notifyCharacteristic": "FFF1",
+      "writeType": "withResponse",
+      "payload": "01",
+      "expectedResponseLength": 12,
+      "checksum": "none"
+    },
+    {
+      "id": "turnLedOn",
+      "title": "Turn LED On",
+      "service": "main",
+      "writeCharacteristic": "FFF2",
+      "notifyCharacteristic": "FFF1",
+      "writeType": "withResponse",
+      "payload": "02 01",
+      "expectedResponseLength": 12,
+      "checksum": "none",
+      "responseFieldsAction": "readState"
+    },
+    {
+      "id": "turnLedOff",
+      "title": "Turn LED Off",
+      "service": "main",
+      "writeCharacteristic": "FFF2",
+      "notifyCharacteristic": "FFF1",
+      "writeType": "withResponse",
+      "payload": "02 00",
+      "expectedResponseLength": 12,
+      "checksum": "none",
+      "responseFieldsAction": "readState"
+    },
+    {
+      "id": "setRGB",
+      "title": "Set RGB LED",
+      "service": "main",
+      "writeCharacteristic": "FFF2",
+      "notifyCharacteristic": "FFF1",
+      "writeType": "withResponse",
+      "payload": "03 00 00 00",
+      "payloadTemplate": "03 {red} {green} {blue}",
+      "expectedResponseLength": 12,
+      "checksum": "none",
+      "responseFieldsAction": "readState"
+    },
+    {
+      "id": "setBrightness",
+      "title": "Set Brightness",
+      "service": "main",
+      "writeCharacteristic": "FFF2",
+      "notifyCharacteristic": "FFF1",
+      "writeType": "withResponse",
+      "payload": "04 20",
+      "payloadTemplate": "04 {value}",
+      "expectedResponseLength": 12,
+      "checksum": "none",
+      "responseFieldsAction": "readState"
+    }
+  ],
+  "fields": [
+    {
+      "id": "packet_magic",
+      "title": "Packet Magic",
+      "action": "readState",
+      "byteOffset": 0,
+      "byteLength": 1,
+      "type": "hex"
+    },
+    {
+      "id": "protocol_version",
+      "title": "Protocol Version",
+      "action": "readState",
+      "byteOffset": 1,
+      "byteLength": 1,
+      "type": "uint8"
+    },
+    {
+      "id": "led_on",
+      "title": "LED",
+      "action": "readState",
+      "byteOffset": 2,
+      "byteLength": 1,
+      "type": "bool"
+    },
+    {
+      "id": "red",
+      "title": "Red",
+      "action": "readState",
+      "byteOffset": 3,
+      "byteLength": 1,
+      "type": "uint8"
+    },
+    {
+      "id": "green",
+      "title": "Green",
+      "action": "readState",
+      "byteOffset": 4,
+      "byteLength": 1,
+      "type": "uint8"
+    },
+    {
+      "id": "blue",
+      "title": "Blue",
+      "action": "readState",
+      "byteOffset": 5,
+      "byteLength": 1,
+      "type": "uint8"
+    },
+    {
+      "id": "brightness",
+      "title": "Brightness",
+      "action": "readState",
+      "byteOffset": 6,
+      "byteLength": 1,
+      "type": "uint8"
+    },
+    {
+      "id": "last_command",
+      "title": "Last Command",
+      "action": "readState",
+      "byteOffset": 7,
+      "byteLength": 1,
+      "type": "enum",
+      "values": {
+        "0": "Boot",
+        "1": "Read State",
+        "2": "Set LED",
+        "3": "Set RGB",
+        "4": "Set Brightness"
+      }
+    },
+    {
+      "id": "uptime_seconds",
+      "title": "Uptime",
+      "action": "readState",
+      "byteOffset": 8,
+      "byteLength": 4,
+      "type": "uint32",
+      "endian": "big",
+      "unit": "s"
+    }
+  ],
+  "ui": {
+    "fieldOrder": [
+      "led_on",
+      "red",
+      "green",
+      "blue",
+      "brightness",
+      "last_command",
+      "uptime_seconds",
+      "protocol_version",
+      "packet_magic"
+    ]
+  },
+  "controls": [
+    {
+      "id": "ledPower",
+      "title": "LED",
+      "type": "toggle",
+      "stateField": "led_on",
+      "onAction": "turnLedOn",
+      "offAction": "turnLedOff"
+    },
+    {
+      "id": "ledColor",
+      "title": "LED Color",
+      "type": "rgbSliders",
+      "action": "setRGB",
+      "redField": "red",
+      "greenField": "green",
+      "blueField": "blue"
+    },
+    {
+      "id": "ledBrightness",
+      "title": "Brightness",
+      "type": "valueSlider",
+      "action": "setBrightness",
+      "valueField": "brightness",
+      "valueKey": "value",
+      "minValue": 0,
+      "maxValue": 255
+    }
+  ]
+}
