@@ -4,8 +4,6 @@ title: Support
 permalink: /support/
 ---
 
-# Support
-
 For TransparentBLE support, bug reports, or privacy questions, open an issue on GitHub:
 
 [https://github.com/arturpilavetz/transparentble-app/issues](https://github.com/arturpilavetz/transparentble-app/issues)

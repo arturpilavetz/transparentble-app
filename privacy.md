@@ -4,8 +4,6 @@ title: Privacy Policy
 permalink: /privacy/
 ---
 
-# Privacy Policy
-
 Effective date: June 25, 2026
 
 TransparentBLE is designed as a local Bluetooth Low Energy utility. The app scans for nearby BLE devices, connects to devices when you choose, inspects services and characteristics, records diagnostic log files, and loads device profile files.

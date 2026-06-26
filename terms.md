@@ -4,8 +4,6 @@ title: Terms of Use
 permalink: /terms/
 ---
 
-# Terms of Use
-
 Effective date: June 25, 2026
 
 By using TransparentBLE, you agree to these terms.
