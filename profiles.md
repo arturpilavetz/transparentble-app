@@ -8,6 +8,10 @@ TransparentBLE profiles are JSON files that describe how a BLE device should be 
 
 A profile can define device name prefixes, service and characteristic UUIDs, polling actions, response fields, display order, and optional controls. This lets a user build an iOS interface for a BLE device without writing Swift.
 
+## Safety Warning
+
+Profiles can send real BLE commands to connected hardware. Incorrect, unsafe, or untrusted commands may change device behavior, alter stored settings, interrupt operation, cause data loss, or damage connected hardware. Only import profiles you understand and trust, and test control actions carefully.
+
 ## Available Profiles
 
 ### EB3A
@@ -170,7 +174,7 @@ Common control fields:
 - `redField`, `greenField`, `blueField`: fields used by RGB controls
 - `options`: menu choices for `optionPicker` controls
 
-Controls should only point to actions you understand and consider safe. If a device command can change hardware state, power output, calibration, firmware settings, or stored configuration, treat it as a control action and test carefully.
+Controls should only point to actions you understand and consider safe. If a device command can change hardware state, power output, calibration, firmware settings, or stored configuration, treat it as a control action and test carefully. Use control actions at your own risk.
 
 ### Toggle Controls
 
@@ -251,4 +255,4 @@ Build a profile in small steps:
 
 Keep a backup copy of working profiles before editing. A profile is just configuration, but it can still send real BLE commands.
 
-Only import or share profiles you understand and trust. Profile actions can send commands to a BLE device.
+Only import or share profiles you understand and trust. Profile actions can send commands to a BLE device, and a misconfigured profile can send the wrong command to the wrong characteristic.
