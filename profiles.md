@@ -34,11 +34,11 @@ A sample profile for a custom ESP32-C6 BLE LED device. It demonstrates reading s
 
 ## Importing Profiles
 
-If TransparentBLE is installed, tap **Open in TransparentBLE** to download and import the profile automatically.
+If TransparentBLE is installed, tap **Open in TransparentBLE** to download and import the profile automatically. iOS opens the app, imports the profile, then shows the Device Profiles screen with an import status message.
 
-You can also download a `.bleprofile.json` file to Files on your iPhone or iPad, then import it from TransparentBLE Settings using Device Profiles.
+If the app is not installed, or if iOS does not open the app from the link, use **Download file** instead. Save the `.bleprofile.json` file to Files on your iPhone or iPad, then import it from TransparentBLE Settings using Device Profiles.
 
-On iOS Safari, use the download button and save the file locally. If Safari opens the JSON as text, use Share and save it to Files, then import that saved file from the app.
+On iOS Safari, if the downloaded JSON opens as text, use Share and save it to Files, then import that saved file from the app.
 
 Imported profiles are stored locally on your device. You can export or delete imported profiles from TransparentBLE Settings.
 
