@@ -4,7 +4,7 @@ title: Privacy Policy
 permalink: /privacy/
 ---
 
-Effective date: June 25, 2026
+Effective date: June 29, 2026
 
 TransparentBLE is designed as a local Bluetooth Low Energy utility. The app scans for nearby BLE devices, connects to devices when you choose, inspects services and characteristics, records diagnostic log files, and loads profile files that describe how BLE device data and commands should be handled.
 
@@ -26,13 +26,17 @@ TransparentBLE may ask for location permission only for optional Background Reco
 
 Diagnostic logs are stored locally in the app's documents storage. Imported BLE profile files are also stored locally. You can delete logs from inside the app.
 
+## Online Profile Downloads
+
+If you tap an online profile import link, TransparentBLE downloads the selected profile file from the URL you opened. The app imports that file locally after validation. TransparentBLE does not upload your BLE logs, device payloads, location, or imported profiles to the developer.
+
 ## Sharing
 
 If you use iOS sharing or export features, you choose where exported log files are sent. Data shared through those system actions is handled by the destination app or service you select.
 
 ## Third-Party Services
 
-TransparentBLE does not include analytics, advertising, tracking SDKs, or developer-operated cloud services.
+TransparentBLE does not include analytics, advertising, tracking SDKs, or developer-operated cloud services. Online profile downloads may be served by GitHub Pages or another profile URL you choose to open; those services receive normal network request information such as IP address and user agent.
 
 ## Data Retention And Deletion
 

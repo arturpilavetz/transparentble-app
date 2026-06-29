@@ -18,17 +18,25 @@ Profiles can send real BLE commands to connected hardware. Incorrect, unsafe, or
 
 A downloadable profile for importing into TransparentBLE.
 
-<a class="download-link" href="/transparentble-app/downloads/profiles/bluetti-eb3a.bleprofile.json" download>Download EB3A profile file</a>
+<p class="profile-actions">
+	<a class="download-link" href="transparentble://import-profile?url=https%3A%2F%2Farturpilavetz.github.io%2Ftransparentble-app%2Fdownloads%2Fprofiles%2Fbluetti-eb3a.bleprofile.json">Open in TransparentBLE</a>
+	<a class="download-link download-link--secondary" href="/transparentble-app/downloads/profiles/bluetti-eb3a.bleprofile.json" download>Download file</a>
+</p>
 
 ### ESP32-C6 LED
 
 A sample profile for a custom ESP32-C6 BLE LED device. It demonstrates reading state, toggling power, setting RGB values, and changing brightness.
 
-<a class="download-link" href="/transparentble-app/downloads/profiles/esp32-c6-led.bleprofile.json" download>Download ESP32-C6 LED profile file</a>
+<p class="profile-actions">
+	<a class="download-link" href="transparentble://import-profile?url=https%3A%2F%2Farturpilavetz.github.io%2Ftransparentble-app%2Fdownloads%2Fprofiles%2Fesp32-c6-led.bleprofile.json">Open in TransparentBLE</a>
+	<a class="download-link download-link--secondary" href="/transparentble-app/downloads/profiles/esp32-c6-led.bleprofile.json" download>Download file</a>
+</p>
 
 ## Importing Profiles
 
-Download a `.bleprofile.json` file to Files on your iPhone or iPad, then import it from TransparentBLE Settings using Device Profiles.
+If TransparentBLE is installed, tap **Open in TransparentBLE** to download and import the profile automatically.
+
+You can also download a `.bleprofile.json` file to Files on your iPhone or iPad, then import it from TransparentBLE Settings using Device Profiles.
 
 On iOS Safari, use the download button and save the file locally. If Safari opens the JSON as text, use Share and save it to Files, then import that saved file from the app.
 

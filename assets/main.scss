@@ -13,6 +13,8 @@
 	--link-color: #0a62c4;
 	--button-bg: #111318;
 	--button-text: #ffffff;
+	--secondary-button-bg: #eef1f5;
+	--secondary-button-text: #222832;
 	--menu-hover-bg: #eef5ff;
 	--menu-shadow: 0 18px 48px rgba(16, 24, 40, 0.16);
 }
@@ -27,6 +29,8 @@
 		--link-color: #8ab4ff;
 		--button-bg: #e8eef8;
 		--button-text: #111318;
+		--secondary-button-bg: #232933;
+		--secondary-button-text: #f2f4f8;
 		--menu-hover-bg: #222d3c;
 		--menu-shadow: 0 18px 48px rgba(0, 0, 0, 0.46);
 	}
@@ -191,13 +195,20 @@ blockquote {
 	color: var(--text-secondary);
 }
 
+.profile-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 0.25rem 0 1rem;
+}
+
 .download-link {
 	background: var(--button-bg);
 	border-radius: 8px;
 	color: var(--button-text);
 	display: inline-block;
 	font-weight: 600;
-	margin: 0.25rem 0 1rem;
+	margin: 0;
 	padding: 0.65rem 0.9rem;
 }
 
@@ -207,6 +218,15 @@ blockquote {
 
 .download-link:hover {
 	text-decoration: none;
+}
+
+.download-link--secondary {
+	background: var(--secondary-button-bg);
+	color: var(--secondary-button-text);
+}
+
+.download-link--secondary:visited {
+	color: var(--secondary-button-text);
 }
 
 @media screen and (max-width: 600px) {
