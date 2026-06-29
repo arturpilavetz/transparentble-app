@@ -107,26 +107,26 @@ a:visited {
 	appearance: none;
 	-webkit-appearance: none;
 	align-items: center;
-	background: var(--surface-bg);
-	border: 1px solid var(--surface-border);
-	border-radius: 8px;
+	background: transparent;
+	border: 0;
+	border-radius: 6px;
 	box-sizing: border-box;
 	cursor: pointer;
 	display: inline-flex;
 	flex-direction: column;
-	gap: 5px;
-	height: 44px;
+	gap: 4px;
+	height: 36px;
 	justify-content: center;
 	margin: 0;
 	padding: 0;
-	width: 44px;
+	width: 36px;
 }
 
 .mobile-menu__button span {
 	background: var(--text-primary);
 	border-radius: 999px;
 	display: block;
-	height: 3px;
+	height: 2px;
 	width: 22px;
 }
 
@@ -259,9 +259,11 @@ blockquote {
 
 	.mobile-menu {
 		display: block;
+		margin-left: auto;
 	}
 
 	.app-header__inner {
+		align-items: center;
 		gap: 16px;
 	}
 }
