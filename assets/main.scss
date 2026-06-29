@@ -265,6 +265,9 @@ blockquote {
 	.app-header__inner {
 		align-items: center;
 		gap: 16px;
+		max-width: none;
+		padding-left: 18px;
+		padding-right: 18px;
 	}
 }
 
