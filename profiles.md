@@ -25,11 +25,12 @@ A downloadable profile for importing into TransparentBLE.
 
 ### ESP32-C6 LED
 
-A sample profile for a custom ESP32-C6 BLE LED device. It demonstrates reading state, toggling power, setting RGB values, and changing brightness.
+A sample profile for a custom ESP32-C6 BLE LED device. It demonstrates reading state, toggling power, setting RGB values, and changing brightness. Use the Arduino sketch below to flash a compatible ESP32-C6 board for testing.
 
 <p class="profile-actions">
 	<a class="download-link" href="transparentble://import-profile?url=https%3A%2F%2Farturpilavetz.github.io%2Ftransparentble-app%2Fdownloads%2Fprofiles%2Fesp32-c6-led.bleprofile.json">Open in TransparentBLE</a>
 	<a class="download-link download-link--secondary" href="/transparentble-app/downloads/profiles/esp32-c6-led.bleprofile.json" download>Download file</a>
+	<a class="download-link download-link--secondary" href="/transparentble-app/downloads/arduino/TransparentBLE_ESP32C6_LED.ino" download>Download Arduino sketch</a>
 </p>
 
 ## Importing Profiles

@@ -11,12 +11,12 @@
 			{%- endfor -%}
 		</nav>
 
-		<details class="mobile-menu">
-			<summary class="mobile-menu__button" aria-label="Open navigation">
+		<div class="mobile-menu">
+			<button class="mobile-menu__button" type="button" aria-label="Open navigation" aria-expanded="false">
 				<span aria-hidden="true"></span>
 				<span aria-hidden="true"></span>
 				<span aria-hidden="true"></span>
-			</summary>
+			</button>
 
 			<nav class="mobile-menu__panel" aria-label="Mobile navigation">
 				{%- for item in nav_items -%}
@@ -24,15 +24,34 @@
 					<a href="{{ nav_item[1] | relative_url }}">{{ nav_item[0] }}</a>
 				{%- endfor -%}
 			</nav>
-		</details>
+		</div>
 	</div>
 </header>
 
 <script>
+	document.querySelectorAll(".mobile-menu__button").forEach(function(button) {
+		button.addEventListener("click", function(event) {
+			event.stopPropagation();
+			var menu = button.closest(".mobile-menu");
+			var isOpen = menu.classList.toggle("is-open");
+			button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+		});
+	});
+
+	document.querySelectorAll(".mobile-menu__panel a").forEach(function(link) {
+		link.addEventListener("click", function() {
+			var menu = link.closest(".mobile-menu");
+			var button = menu.querySelector(".mobile-menu__button");
+			menu.classList.remove("is-open");
+			button.setAttribute("aria-expanded", "false");
+		});
+	});
+
 	document.addEventListener("click", function(event) {
-		document.querySelectorAll(".mobile-menu[open]").forEach(function(menu) {
+		document.querySelectorAll(".mobile-menu.is-open").forEach(function(menu) {
 			if (!menu.contains(event.target)) {
-				menu.removeAttribute("open");
+				menu.classList.remove("is-open");
+				menu.querySelector(".mobile-menu__button").setAttribute("aria-expanded", "false");
 			}
 		});
 	});
@@ -42,8 +61,9 @@
 			return;
 		}
 
-		document.querySelectorAll(".mobile-menu[open]").forEach(function(menu) {
-			menu.removeAttribute("open");
+		document.querySelectorAll(".mobile-menu.is-open").forEach(function(menu) {
+			menu.classList.remove("is-open");
+			menu.querySelector(".mobile-menu__button").setAttribute("aria-expanded", "false");
 		});
 	});
 </script>

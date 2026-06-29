@@ -104,6 +104,8 @@ a:visited {
 }
 
 .mobile-menu__button {
+	appearance: none;
+	-webkit-appearance: none;
 	align-items: center;
 	background: var(--surface-bg);
 	border: 1px solid var(--surface-border);
@@ -115,16 +117,9 @@ a:visited {
 	gap: 5px;
 	height: 44px;
 	justify-content: center;
-	list-style: none;
+	margin: 0;
+	padding: 0;
 	width: 44px;
-}
-
-.mobile-menu__button::-webkit-details-marker {
-	display: none;
-}
-
-.mobile-menu__button::marker {
-	content: "";
 }
 
 .mobile-menu__button span {
@@ -148,6 +143,10 @@ a:visited {
 	right: 0;
 	top: calc(100% + 10px);
 	z-index: 20;
+}
+
+.mobile-menu:not(.is-open) .mobile-menu__panel {
+	display: none;
 }
 
 .mobile-menu__panel a {
